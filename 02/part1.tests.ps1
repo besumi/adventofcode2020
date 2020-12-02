@@ -3,7 +3,7 @@ Describe 'part1.ps1' {
         Mock Get-Content {
             @(
                 "3-4 q: qqqq",
-                "6-7 m: mqmlltc"
+                "6-7 m: mqmlltc",
                 "8-10 k: kkkfkhkkkpkkkk"
             )
         }
@@ -17,7 +17,7 @@ Describe 'part1.ps1' {
         Mock Get-Content {
             @(
                 "1-3 a: abcde",
-                "1-3 b: cdefg"
+                "1-3 b: cdefg",
                 "2-9 c: ccccccccc"
             )
         }
