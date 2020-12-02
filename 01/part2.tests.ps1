@@ -1,5 +1,5 @@
 Describe 'part2.ps1' {
-    It 'Returns a matching password from input' {
+    It 'Returns correct product' {
         Mock Get-Content {
             @(
                 501,
@@ -14,7 +14,7 @@ Describe 'part2.ps1' {
         $answer | Should -Be 202504200
     }
 
-    It 'Returns correct password from example' {
+    It 'Returns correct product from example' {
         Mock Get-Content {
             @(
                 1721,
