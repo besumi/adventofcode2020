@@ -8,7 +8,7 @@ Describe 'part1.ps1' {
             )
         }
 
-        $goodPasswords = .\part1.ps1
+        $goodPasswords = .$PSScriptRoot\part1.ps1
         $goodPasswords.Count | Should -Be 1
         $goodPasswords | Should -Be "3-4 q: qqqq"
     }
@@ -22,7 +22,7 @@ Describe 'part1.ps1' {
             )
         }
 
-        $goodPasswords = .\part1.ps1
+        $goodPasswords = .$PSScriptRoot\part1.ps1
         $goodPasswords.Count | Should -Be 2
         $goodPasswords | Should -Contain "1-3 a: abcde"
         $goodPasswords | Should -Contain "2-9 c: ccccccccc"

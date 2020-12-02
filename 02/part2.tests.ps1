@@ -8,7 +8,7 @@ Describe 'part2.ps1' {
             )
         }
 
-        $goodPasswords = .\part2.ps1
+        $goodPasswords = .$PSScriptRoot\part2.ps1
         $goodPasswords.Count | Should -Be 1
         $goodPasswords | Should -Be "8-10 k: kkkfkhkkkpkkkk"
     }
@@ -22,7 +22,7 @@ Describe 'part2.ps1' {
             )
         }
 
-        $goodPasswords = .\part2.ps1
+        $goodPasswords = .$PSScriptRoot\part2.ps1
         $goodPasswords.Count | Should -Be 1
         $goodPasswords | Should -Be "1-3 a: abcde"
     }

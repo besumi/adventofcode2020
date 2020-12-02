@@ -10,7 +10,7 @@ Describe 'part2.ps1' {
             )
         }
 
-        $answer = .\part2.ps1
+        $answer = .$PSScriptRoot\part2.ps1
         $answer | Should -Be 202504200
     }
 
@@ -26,7 +26,7 @@ Describe 'part2.ps1' {
             )
         }
 
-        $answer = .\part2.ps1
+        $answer = .$PSScriptRoot\part2.ps1
         $answer | Should -Be 241861950
     }
 }
