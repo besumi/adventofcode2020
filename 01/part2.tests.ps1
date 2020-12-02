@@ -1,4 +1,4 @@
-Describe 'part1.ps1' {
+Describe 'part2.ps1' {
     It 'Returns a matching password from input' {
         Mock Get-Content {
             @(
