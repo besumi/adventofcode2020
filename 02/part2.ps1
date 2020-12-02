@@ -1,3 +1,6 @@
+[CmdletBinding()]
+param()
+
 $rawInput = Get-Content .\input.txt
 [System.Collections.ArrayList]$goodLines = @()
 
@@ -12,9 +15,11 @@ Foreach ($line in $rawInput) {
 
     $firstCharacter = $password[$firstIndex]
     $secondCharacter = $password[$secondIndex]
+    Write-Debug "Password/character/first char/second char: $password/$character/$firstCharacter/$secondCharacter"
 
     If ($firstCharacter -ne $secondCharacter) {
         If ($firstCharacter -eq $character -or $secondCharacter -eq $character) {
+            Write-Debug "Valid password found"
             $null = $goodLines.Add($line)
         }
     }

@@ -1,3 +1,6 @@
+[CmdletBinding()]
+param()
+
 $input = Get-Content input.txt | Foreach-Object {
     [int]$_
 } | Sort-Object
@@ -21,8 +24,6 @@ Foreach ($number in $input) {
     }
 }
 
-Write-Host "First number: $firstNumber"
-Write-Host "Second number: $secondNumber"
-Write-Host "Third number: $thirdNumber"
+Write-Debug "First number/second number/third number: $firstNumber/$secondNumber/$thirdNumber"
 
 $firstNumber*$secondNumber*$thirdNumber

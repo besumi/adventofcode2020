@@ -1,3 +1,6 @@
+[CmdletBinding()]
+param()
+
 $rawInput = Get-Content .\input.txt
 [System.Collections.ArrayList]$goodLines = @()
 
@@ -12,7 +15,10 @@ Foreach ($line in $rawInput) {
 
     $numberOfOccurrences = ($password -split $character).Count - 1
 
+    Write-Debug "Password/character/low #/high #/occurrences: $password/$character/$lowestNumber/$highestNumber/$numberOfOccurrences"
+
     If ($numberOfOccurrences -ge $lowestNumber -and $numberOfOccurrences -le $highestNumber) {
+        Write-Debug "Valid password found"
         $null = $goodLines.Add($line)
     }
 }
