@@ -3,6 +3,7 @@ param(
     [int]$Down = 1,
     [int]$Right = 3
 )
+
 $executingScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $mapData = Get-Content $executingScriptDirectory\input.txt
 $treeCount = 0
@@ -30,7 +31,6 @@ Foreach ($line in $mapData) {
     }
 
     $downCounter += 1
-
 }
     
 $treeCount
