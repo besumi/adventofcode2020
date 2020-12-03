@@ -18,10 +18,9 @@ Foreach ($combo in $traversalCombinations) {
 }
 
 If ($treeCounts.Count -gt 0) {
-    $total = $treeCounts[0]
-    
-    For ($i = 1; $i -lt $treeCounts.Count; $i++) {
-        $total *= $treeCounts[$i]
+    $total = 1
+    Foreach ($count in $treeCounts) {
+        $total *= $count
     }
     
     $total
