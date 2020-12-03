@@ -3,8 +3,8 @@ param(
     [int]$Down = 1,
     [int]$Right = 3
 )
-
-$mapData = Get-Content .\input.txt
+$executingScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+$mapData = Get-Content $executingScriptDirectory\input.txt
 $treeCount = 0
 $position = $Right
 $downCounter = 0

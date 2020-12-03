@@ -1,6 +1,8 @@
 [CmdletBinding()]
 param()
 
+$executingScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+
 [System.Collections.ArrayList]$treeCounts = @()
 $traversalCombinations = @(
     @(1, 1),
@@ -11,7 +13,7 @@ $traversalCombinations = @(
 )
 
 Foreach ($combo in $traversalCombinations) {
-    $treeCount = .\Get-TreeCount -Right $combo[0] -Down $combo[1]
+    $treeCount = .$executingScriptDirectory\Get-TreeCount.ps1 -Right $combo[0] -Down $combo[1]
     $null = $treeCounts.Add($treeCount)
 }
 
