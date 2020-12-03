@@ -4,7 +4,7 @@ param(
     [int]$Right = 3
 )
 
-[System.Collections.ArrayList]$mapData = Get-Content .\input.txt
+$mapData = Get-Content .\input.txt
 $treeCount = 0
 $position = $Right
 $downCounter = 0
