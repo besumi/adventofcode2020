@@ -6,6 +6,7 @@ param(
 $executingScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $rawData = Get-Content .\input.txt
 $totalGoodPassports = 0
+$totalBadPassports = 0
 
 [System.Collections.ArrayList]$allPassports = @()
 $currentPassport = New-Object Hashtable
@@ -31,14 +32,48 @@ If ($currentPassport.Keys.Count -gt 0) {
 }
 
 Foreach ($passport in $allPassports) {
-    $isValid = .$executingScriptDirectory\Validate-Passport.ps1 $passport -CheckValues:$CheckValues.IsPresent
-    If ($isValid) {
-        Write-Debug "Passport is valid"
-        $totalGoodPassports += 1
+    If ($CheckValues) {
+        Try {
+            .$executingScriptDirectory\Validate-Passport.ps1 -BirthYear $passport["byr"]`
+            -IssueYear $passport["iyr"] -ExpirationYear $passport["eyr"] -Height $passport["hgt"]`
+            -HairColor $passport["hcl"] -EyeColor $passport["ecl"] -PassportID $passport["pid"] -CountryID $passport["cid"]
+
+            Write-Debug "Passport is valid"
+            $totalGoodPassports += 1
+        }
+        Catch {
+            Write-Debug "$($_.Exception.Message)"
+            $totalBadPassports += 1
+        }
     }
     Else {
-        Write-Debug "Passport is invalid"
+        $requiredKeys = @(
+            "byr",
+            "iyr",
+            "eyr",
+            "hgt",
+            "hcl",
+            "ecl",
+            "pid"
+        )
+
+        $passportKeys = $passport.Keys | Where-Object {$_ -ne "cid" }
+
+        $matchedKeys = 0
+        $requiredKeys | Foreach-Object {
+            If ($_ -in $passportKeys) {
+                $matchedKeys += 1
+            }
+        }
+
+        If ($matchedKeys -eq $requiredKeys.Length) {
+            $totalGoodPassports += 1
+        }
+        Else {
+            $totalBadPassports += 1
+        }
     }
 }
 
+Write-Debug "Bad passports: $totalBadPassports"
 $totalGoodPassports
