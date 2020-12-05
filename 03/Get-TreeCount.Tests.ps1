@@ -1,6 +1,6 @@
 Describe 'Get-TreeCount' {
     Context 'Using input data' {
-        It 'Returns correct tree count for Part1' {
+        BeforeAll {
             Mock Get-Content {
                 @(
                     "...#....#.#...##......#.#...##.",
@@ -14,7 +14,9 @@ Describe 'Get-TreeCount' {
                     "..#...........#......##.#.#...."
                 )
             }
-    
+        }
+
+        It 'Returns correct tree count for Part1' {
             $treeCount = .$PSScriptRoot\Get-TreeCount.ps1
             $treeCount | Should -Be 6
         }
@@ -26,20 +28,22 @@ Describe 'Get-TreeCount' {
     }
 
     Context 'Using example data' {
-        Mock Get-Content {
-            @(
-                "..##.......",
-                "#...#...#..",
-                ".#....#..#.",
-                "..#.#...#.#",
-                ".#...##..#.",
-                "..#.##.....",
-                ".#.#.#....#",
-                ".#........#",
-                "#.##...#...",
-                "#...##....#",
-                ".#..#...#.#"
-            )
+        BeforeAll {
+            Mock Get-Content {
+                @(
+                    "..##.......",
+                    "#...#...#..",
+                    ".#....#..#.",
+                    "..#.#...#.#",
+                    ".#...##..#.",
+                    "..#.##.....",
+                    ".#.#.#....#",
+                    ".#........#",
+                    "#.##...#...",
+                    "#...##....#",
+                    ".#..#...#.#"
+                )
+            }
         }
 
         It 'Returns correct count for Part1' {
