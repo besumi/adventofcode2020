@@ -1,3 +1,6 @@
+[CmdletBinding()]
+param()
+
 Describe 'part1.ps1' {
     Context 'Sample data' {
         BeforeAll {
@@ -51,12 +54,6 @@ Describe 'part1.ps1' {
         It 'returns expected result' {
             $answer = .$PSScriptRoot\part1.ps1
             $answer | Should -Be 4
-        }
-    }
-    Context 'Actual input' {
-        It 'returns expected result' {
-            $answer = .$PSScriptRoot\part1.ps1
-            $answer | Should -Be 348
         }
     }
 }
