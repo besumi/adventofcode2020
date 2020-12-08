@@ -1,6 +1,3 @@
-[CmdletBinding()]
-param()
-
 Describe 'part1.ps1' {
     Context 'Sample data' {
         BeforeAll {

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param()
 
-$rawInput = Get-Content input.txt
+$rawInput = Get-Content .\input.txt
 [System.Collections.ArrayList]$allInstructions = @()
 $index = 0
 
