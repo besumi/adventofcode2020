@@ -1,7 +1,8 @@
 Describe 'part1.ps1' {
     Context 'Sample data' {
-        Mock Get-Content {
-            @"
+        It 'Returns correct result' {
+            Mock Get-Content {
+                @"
 35
 20
 15
@@ -23,8 +24,8 @@ Describe 'part1.ps1' {
 309
 576
 "@
-        }
-        It 'Returns correct result' {
+            }
+            
             $answer = .$PSScriptRoot\part1.ps1 -PreambleLength 5
             $answer[0] | Should -Be 127
             $answer.Count | Should -Be 1
