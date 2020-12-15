@@ -15,7 +15,7 @@ $joltageToCheck = 0
 
 While (($joltageToCheck -ge 0) -and $joltageToCheck -lt ($deviceJoltage-3)) {
     Write-Verbose "Checking next adapter for joltage $joltageToCheck..."
-    $next = .$executingScriptDirectory\Get-NextValidAdapter.ps1 -Joltage $joltageToCheck -Adapters $rawInput
+    $next = (.$executingScriptDirectory\Get-NextValidAdapter.ps1 -Joltage $joltageToCheck -Adapters $rawInput) | Select-Object -First 1
 
     Write-Verbose "Adapter: $next"
     $rawInput = $rawInput | Where-Object {$_ -ne $next}
