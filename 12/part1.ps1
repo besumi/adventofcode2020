@@ -14,9 +14,7 @@ $directions = @('N', 'E', 'S', 'W')
 
 $direction = 'E'
 $location = @{
-    "xDirection" = 'E'
     "xUnits" = 0
-    "yDirection" = 'N'
     "yUnits" = 0
 }
 
