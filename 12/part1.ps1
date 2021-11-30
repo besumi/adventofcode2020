@@ -3,9 +3,6 @@ param(
     [array]$RawInput
 )
 
-$executingScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-$returnValue = 0
-
 If (!$RawInput) {
     $RawInput = Get-Content .\input.txt
 }
